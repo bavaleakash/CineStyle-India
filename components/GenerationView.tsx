@@ -2,8 +2,7 @@ import { GoogleGenAI, Modality } from "@google/genai";
 import React, { useState } from 'react';
 import { Prompt } from '../types';
 import Spinner from './Spinner';
-
-declare var JSZip: any;
+import JSZip from 'jszip';
 
 interface GenerationViewProps {
   prompt: Prompt;
@@ -73,7 +72,8 @@ const GenerationView: React.FC<GenerationViewProps> = ({ prompt, onBack }) => {
     setSelectedForDownload([]);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+      // Fix: Use process.env.API_KEY to initialize GoogleGenAI as per coding guidelines.
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const imageParts = uploadedFiles.map(file => ({
         inlineData: { data: file.base64, mimeType: file.mimeType },
       }));
@@ -138,10 +138,6 @@ const GenerationView: React.FC<GenerationViewProps> = ({ prompt, onBack }) => {
     if (selectedForDownload.length === 0) {
       setError("No images selected for download.");
       return;
-    }
-    if (typeof JSZip === 'undefined') {
-        setError("Could not create ZIP file. JSZip library not found.");
-        return;
     }
 
     setIsZipping(true);
