@@ -1,0 +1,21 @@
+{
+  "short_name": "CineStyle India",
+  "name": "CineStyle India: AI Portrait Generator",
+  "description": "Transform your photos with iconic Bollywood, festive, and royal styles using the power of AI. Upload your photos and generate stunning, downloadable images.",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4f46e5",
+  "background_color": "#f9fafb"
+}
